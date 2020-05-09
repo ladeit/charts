@@ -7,7 +7,7 @@ set -o errexit
 set -o pipefail
 
 CHART_DIR="ladeit"
-CHART_REPO="git@github.com:ladeit/ladeit.github.io.git"
+CHART_REPO="git@github.com:ladeit/charts.git"
 REPO_DIR="ladeit.github.io"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 TMP_DIR="tmp"
