@@ -8,7 +8,7 @@ set -o pipefail
 
 CHART_DIR="ladeit"
 CHART_REPO="git@github.com:ladeit/charts.git"
-REPO_DIR="ladeit.github.io"
+REPO_DIR="chart"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 TMP_DIR="tmp"
 # needed for github actions as home dir would be /github/home/ otherwise
@@ -20,10 +20,10 @@ echo "${SSH_PRIVATE_KEY}" > /home/gkh/.ssh/id_rsa
 chmod 600 /home/gkh/.ssh/id_rsa
 ssh-keyscan github.com >> /home/gkh/.ssh/known_hosts
 
-# get ladeit.github.io
+# get chart
 test -d "${REPO_ROOT}"/"${REPO_DIR}" && rm -rf "${REPO_ROOT:=?}"/"${REPO_DIR:=?}"
 git clone "${CHART_REPO}" "${REPO_ROOT}"/"${REPO_DIR}"
-git checkout gh-pages
+git checkout -t origin/gh-pages
 
 # get not builded charts
 while read -r FILE; do
