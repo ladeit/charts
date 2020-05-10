@@ -2,11 +2,19 @@ apiVersion: v1
 entries:
   ladeit:
   - apiVersion: v1
-    created: 2020-05-09T03:16:51.909571443-04:00
+    created: "2020-05-10T06:33:19.666940427Z"
+    description: Ladeit helm chart
+    digest: 654399cf709f794e36583d46b7792f3d0d834ed5e7644a55faff785b7e52c559
+    name: ladeit
+    urls:
+    - https://charts/ladeit-0.3.3.tgz
+    version: 0.3.3
+  - apiVersion: v1
+    created: "2020-05-09T03:16:51.909571443-04:00"
     description: Ladeit helm chart
     digest: 7dcc8f3e2617369f933031805e14ab51fd1167204f7cf7b4c287159198a8b623
     name: ladeit
     urls:
     - https://ladeit.github.io/charts/ladeit-0.1.0.tgz
     version: 0.1.0
-generated: 2020-05-09T03:16:51.90907533-04:00
+generated: "2020-05-10T06:33:19.66657192Z"
