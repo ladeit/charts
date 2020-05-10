@@ -7,7 +7,7 @@ entries:
     digest: 654399cf709f794e36583d46b7792f3d0d834ed5e7644a55faff785b7e52c559
     name: ladeit
     urls:
-    - https://charts/ladeit-0.3.3.tgz
+    - https://ladeit.github.io/charts/ladeit-0.3.3.tgz
     version: 0.3.3
   - apiVersion: v1
     created: "2020-05-09T03:16:51.909571443-04:00"
