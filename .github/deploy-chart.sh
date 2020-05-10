@@ -73,7 +73,7 @@ for CHART in ${CHARTS}; do
 done
 
 # Create index and merge with previous index which contains the non-changed charts
-helm repo index --merge "${REPO_ROOT}"/"${TMP_DIR}"/index.yaml --url https://"${REPO_DIR}" "${REPO_ROOT}"/"${REPO_DIR}"
+helm repo index --merge "${REPO_ROOT}"/"${TMP_DIR}"/index.yaml --url https://ladeit.github.io/"${REPO_DIR}" "${REPO_ROOT}"/"${REPO_DIR}"
 
 # move old charts back into git repo
 mv "${REPO_ROOT}"/"${TMP_DIR}"/*.tgz "${REPO_ROOT}"/"${REPO_DIR}"
