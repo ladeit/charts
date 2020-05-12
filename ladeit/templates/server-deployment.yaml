@@ -27,13 +27,23 @@ spec:
             name: {{ .Values.volume.name }}
           {{- end }}
           livenessProbe:
+            failureThreshold: {{ .Values.probe.failureThreshold }}
             httpGet:
               path: /actuator/health
               port: {{ .Values.service.internalPort }}
+            initialDelaySeconds: {{ .Values.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probe.periodSeconds }}
+            successThreshold: {{ .Values.probe.successThreshold }}
+            timeoutSeconds: {{ .Values.probe.timeoutSeconds }}
           readinessProbe:
+            failureThreshold: {{ .Values.probe.failureThreshold }}
             httpGet:
               path: /actuator/health
               port: {{ .Values.service.internalPort }}
+            initialDelaySeconds: {{ .Values.probe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.probe.periodSeconds }}
+            successThreshold: {{ .Values.probe.successThreshold }}
+            timeoutSeconds: {{ .Values.probe.timeoutSeconds }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- if .Values.nodeSelector }}
