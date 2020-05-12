@@ -2,3 +2,7 @@ apiVersion: v1
 description: Ladeit helm chart
 name: ladeit
 version: 0.3.3
+icon: https://github.com/ladeit/ladeit.github.io/raw/master/images/ladeit-logo.svg
+maintainers:
+  - name: jiiiuxiii
+  - name: falcomlife
