@@ -2,6 +2,18 @@ apiVersion: v1
 entries:
   ladeit:
   - apiVersion: v1
+    created: "2020-06-08T07:25:41.04587199Z"
+    description: Ladeit helm chart
+    digest: d3b02e02f06e44bd7e8a14f0b02995671b3f3c9b10122d64bf7b26c49b73b545
+    icon: https://github.com/ladeit/ladeit.github.io/raw/master/images/ladeit-logo-1000.png
+    maintainers:
+    - name: jiiiuxiii
+    - name: falcomlife
+    name: ladeit
+    urls:
+    - https://ladeit.github.io/charts/ladeit-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v1
     created: "2020-05-12T02:37:48.77555987Z"
     description: Ladeit helm chart
     digest: b6285a0f99aa828b6917d2d736c04538ec6638db88f490f2de52c1719b714ac8
@@ -13,4 +25,4 @@ entries:
     urls:
     - https://ladeit.github.io/charts/ladeit-0.3.6.tgz
     version: 0.3.6
-generated: "2020-05-12T02:37:48.775199168Z"
+generated: "2020-06-08T07:25:41.045455676Z"
