@@ -12,9 +12,11 @@ service:
   externalPort: 8000
   internalPort: 8000
 ingress:
-  enabled: false
+  enabled: true
   hosts:
     - ladeit-example.local
+env:
+  webkubectlhost: ladeit-example.com
 resources:
   limits:
     cpu: 1500m
@@ -29,10 +31,21 @@ volume:
 persistentVolumeClaim:
   enabled: false
   claimName: ladeit
-probe:
-  failureThreshold: 3
-  initialDelaySeconds: 60
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 3
+webkubectl:
+  image:
+    repository: kubeoperator/webkubectl
+    tag: v2.4.0
+    pullPolicy: IfNotPresent
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 500m
+  service:
+    name: webkubectl
+    type: ClusterIP
+    externalPort: 8080
+    internalPort: 8080
 

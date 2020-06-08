@@ -14,6 +14,10 @@ spec:
       targetPort: {{ .Values.service.internalPort }}
       protocol: TCP
       name: {{ .Values.service.name }}
+    - port: {{ .Values.webkubectl.service.externalPort }}
+      targetPort: {{ .Values.webkubectl.service.internalPort }}
+      protocol: TCP
+      name: {{ .Values.webkubectl.service.name }}
   selector:
     app: {{ template "ladeit.name" . }}
     release: {{ .Release.Name }}

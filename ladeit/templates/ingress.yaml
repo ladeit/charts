@@ -1,6 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $serviceName := include "ladeit.fullname" . -}}
 {{- $servicePort := .Values.service.externalPort -}}
+{{- $webkubectlPort := .Values.webkubectl.service.externalPort -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -20,7 +21,17 @@ spec:
     - host: {{ $host }}
       http:
         paths:
-          - path: /
+          - path: /terminal
+            pathType: Prefix
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $webkubectlPort }} 
+          - path: /api/kube-config
+            pathType: Prefix
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $webkubectlPort }} 
+          - path: /           
             backend:
               serviceName: {{ $serviceName }}
               servicePort: {{ $servicePort }}

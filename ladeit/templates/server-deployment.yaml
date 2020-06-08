@@ -21,31 +21,34 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
+          env:
+          - name: LADEIT_WEBKUBECTL_HOST
+            value: {{ .Values.env.webkubectlhost }}
           {{- if .Values.volume.enabled }}
           volumeMounts:
           - mountPath: {{ .Values.volume.mountPath }}
             name: {{ .Values.volume.name }}
           {{- end }}
-          livenessProbe:
-            failureThreshold: {{ .Values.probe.failureThreshold }}
-            httpGet:
-              path: /actuator/health
-              port: {{ .Values.service.internalPort }}
-            initialDelaySeconds: {{ .Values.probe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.probe.periodSeconds }}
-            successThreshold: {{ .Values.probe.successThreshold }}
-            timeoutSeconds: {{ .Values.probe.timeoutSeconds }}
-          readinessProbe:
-            failureThreshold: {{ .Values.probe.failureThreshold }}
-            httpGet:
-              path: /actuator/health
-              port: {{ .Values.service.internalPort }}
-            initialDelaySeconds: {{ .Values.probe.initialDelaySeconds }}
-            periodSeconds: {{ .Values.probe.periodSeconds }}
-            successThreshold: {{ .Values.probe.successThreshold }}
-            timeoutSeconds: {{ .Values.probe.timeoutSeconds }}
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: {{ .Values.service.internalPort }}
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: {{ .Values.service.internalPort }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+        - image: "{{ .Values.webkubectl.image.repository }}:{{ .Values.webkubectl.image.tag }}"
+          imagePullPolicy: {{ .Values.webkubectl.image.pullPolicy }}
+          name: webkubectl
+          ports:
+          - containerPort: {{ .Values.webkubectl.service.internalPort }}
+            protocol: TCP
+          securityContext:
+            privileged: true
+          resources:
+{{ toYaml .Values.webkubectl.resources | indent 12 }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
